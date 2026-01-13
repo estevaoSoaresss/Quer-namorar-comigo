@@ -42,12 +42,53 @@ html, body {
     left: 10px;
     bottom: 110px;
     z-index: 98;
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: opacity 1.8s ease, transform 1.8s ease;
 }
 
 .body_left img {
     width: 100%;
     height: auto;
+     border-radius: 20px;
+    mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
 }
+
+.body_left.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.body_right {
+    width: 300px;
+    position: absolute;
+    right: 10px;
+    bottom: 110px;
+    z-index: 98;
+
+    opacity: 1;
+    transform: translateY(40px) scale(0.95);
+    transition: opacity 1.8s ease, transform 1.8s ease;
+}
+
+.body_right.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.soft-video {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+
+    object-fit: cover;
+    pointer-events: none;
+
+    mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+}
+
 
 .container .love {
     width: calc(13 * var(--unit-size));
@@ -140,3 +181,18 @@ html, body {
     :root { --unit-size: 20px; }
     .body_left { width: 100px; }
 }
+
+@media (max-width: 768px) {
+    .body_left, .body_right {
+        width: 150px;
+        bottom: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .body_left, .body_right {
+        display: none; /* some no celular, se quiser */
+    }
+}
+
+

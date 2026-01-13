@@ -157,12 +157,39 @@ window.onload = function () {
         
         audio.play().catch(e => console.warn("Autoplay da música foi bloqueado pelo navegador.", e));
         
-        if (gifImage && gifImage.dataset.src) {
-            gifImage.src = gifImage.dataset.src;
-        }
+       if (gifImage && gifImage.dataset.src) {
+        gifImage.src = gifImage.dataset.src;
+
+    // entrada suave após carregar
+        gifImage.onload = () => {
+        gifImage.parentElement.classList.add('show');
+        };
+
+      const bodyRight = document.querySelector('.body_right');
+      const video = document.querySelector('.soft-video');
+
+if (bodyRight) {
+    // anima entrada SEM depender do vídeo
+    setTimeout(() => {
+        bodyRight.classList.add('show');
+    }, 1200);
+}
+
+if (video) {
+    video.muted = true;
+    video.play().catch(() => {
+        console.warn("Autoplay bloqueado, mas o vídeo está preparado.");
+    });
+}
+
+
+
+
+    }
+
 
         setTimeout(() => {
             let creationInterval = setInterval(() => drawNextPartScoped(creationInterval), 300);
-        }, 12000);
+        }, 2500);
     })();
 };
