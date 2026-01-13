@@ -171,28 +171,35 @@ html, body {
     }
 }
 
+
 /* --- RESPONSIVIDADE --- */
-@media (max-width: 768px) {
-    :root { --unit-size: 25px; }
-    .body_left { width: 150px; bottom: 80px; }
-}
 
-@media (max-width: 480px) {
-    :root { --unit-size: 20px; }
-    .body_left { width: 100px; }
-}
-
+/* Tablet e celular */
 @media (max-width: 768px) {
-    .body_left, .body_right {
+    :root {
+        --unit-size: 25px;
+    }
+
+    .body_left,
+    .body_right {
         width: 150px;
         bottom: 80px;
     }
 }
 
+/* Celular */
 @media (max-width: 480px) {
-    .body_left, .body_right {
-        display: none; /* some no celular, se quiser */
+    :root {
+        --unit-size: 20px;
+    }
+
+    .body_left,
+    .body_right {
+        width: 120px;
+        bottom: 60px;
+        display: block;
     }
 }
+
 
 
